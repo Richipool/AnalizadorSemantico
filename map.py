@@ -3,6 +3,8 @@
 
 import persona
 
+
+
 cantidad = 4
 
 array_personas = [persona.Persona("1111", "Jose", 37), persona.Persona("2222", "Karla", 18),
