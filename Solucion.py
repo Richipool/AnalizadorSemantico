@@ -60,19 +60,19 @@ for tokens in f:#recorre las lineas de codigo del archivo fuente
     i = tokens.split()
 #    print(i)
     if(i[2] == "="):#si asigna valores
-        if(i[0] != "void" or i[0] != "int" or (i[0])!= "float" or i[0] != "string" or i[0] == '=' or i[0]==';'):
+        if(i[0] != 'void' and i[0] != 'int' and (i[0])!= 'float' and i[0] != 'string' or (i[0] == '=' or i[0]==';')):
             tipo = None
         else: tipo = i[0]
-        if(i[1] != "void" or i[1] != "int" or (i[1])!= "float" or i[1] != "string" or i[1]!= '=' or i[1]!=';'):
+        if(i[1] != "void" and i[1] != "int" and (i[1])!= "float" and i[1] != "string" and i[1]!= '=' and i[1]!=';'):
             nombre = None
         else: nombre = i[1]
         
         tipo = i[3]
         aux = 3#donde esta la posicion atual en el vector
-        while(flag is True):
+        while(flag is True and aux != len(i)):
             if ('"' in i[aux]):
                 flag = False
-                if('"' in i[aux+1] or i[aux+1] == ';'):
+                if('"' in i[aux+1]):
                     flag = False
                 if(flag is True):
                     tipo = tipo + i[aux+1]
