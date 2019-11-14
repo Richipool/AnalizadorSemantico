@@ -2,7 +2,6 @@
 
 import nltk
 from nltk.tokenize import word_tokenize
-import vector
 
 class Var:
     def __init__(self, _type, _name, _line, _val = None):
@@ -11,8 +10,11 @@ class Var:
         self.line = _line
         self.val = _val
 
+
+
+
 errors = []#vector de errores
-def saveErrors(error, Var var):
+def saveErrors(error, var):
     if(error is 1):#variable no declarada
         errors.append("variable" + var._name+" no declarada")
     elif(error is 2):#valor de retorno no coincide con la declaracion de funcion
@@ -21,11 +23,27 @@ def saveErrors(error, Var var):
         errors.append("asignacion de tipo incorrecto")
 
 
-typesArray = ["","","",""]
+#insertar variables a la tabla
+globalTable = {}
+def saveToTable(var):
+    globalTable[var._name] = var
 
-"""ARCHIVO"""
-tipo, nombre, linea, valor#valr
-globalTable = {} 
+hashtable = {}
+
+def printHasTable():
+    for key in hashtable:
+        print(key, globalTable[key].type, globalTable[key].val, globalTable[key].line)
+
+
+
+
+
+#"""ARCHIVO"""
+tipo= None
+nombre= None
+linea= None 
+valor = None#valr
+ 
 lineCounter = 1#para ir contanto las lineas
 f = open("pruebas.txt", encoding = "utf8")
 #cadena1 = f.read()....sin el encoding no funca
@@ -36,9 +54,10 @@ f = open("pruebas.txt", encoding = "utf8")
 for tokens in f:
     i = word_tokenize(tokens)
     for x in i:
-        if x[i] is "int" or x[i] is "void" or x[i] is "float" or x[i] is "string":
-            tipo = x[i]
-        else 
+        if  i[3] is '=':
+            if x[i] is "int" or x[i] is "void" or x[i] is "float" or x[i] is "string":
+                tipo = x[i]
+            #elif x[i] is 
 
     #print(i)
 
