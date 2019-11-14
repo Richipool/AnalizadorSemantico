@@ -63,20 +63,22 @@ for tokens in f:#recorre las lineas de codigo del archivo fuente
         if(i[0] != 'void' and i[0] != 'int' and (i[0])!= 'float' and i[0] != 'string' or (i[0] == '=' or i[0]==';')):
             tipo = None
         else: tipo = i[0]
-        if(i[1] != "void" and i[1] != "int" and (i[1])!= "float" and i[1] != "string" and i[1]!= '=' and i[1]!=';'):
-            nombre = None
-        else: nombre = i[1]
+        if(i[1] != 'void' and i[1] != 'int' and (i[1])!= 'float' and i[1] != 'string' or (i[1] == '=' or i[1]==';')):
+            nombre = i[1]
+        else: nombre = None 
         
-        tipo = i[3]
+        valor = i[3]
         aux = 3#donde esta la posicion atual en el vector
         while(flag is True and aux != len(i)):
-            if ('"' in i[aux]):
-                flag = False
+           # if ('"' in i[aux]):
+                #flag = False
+            if(i[0] == 'string'):
                 if('"' in i[aux+1]):
+                    valor = valor + ' ' + i[aux+1]
                     flag = False
                 if(flag is True):
-                    tipo = tipo + i[aux+1]
-                aux +=1
+                    valor = valor + ' ' + i[aux+1]
+            aux +=1
         obj = Var(tipo, nombre, lineCounter, valor)
         saveToTable(obj)
     elif(i[2]== ";"):#por si es solo una declaracion
