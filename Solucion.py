@@ -27,12 +27,11 @@ def saveErrors(error, var):
 #insertar variables a la tabla
 globalTable = {}
 def saveToTable(var):
-    globalTable[var._name] = var
+    globalTable[var.name] = var
 
-hashtable = {}
 
 def printHasTable():
-    for key in hashtable:
+    for key in globalTable:
         print(key, globalTable[key].type, globalTable[key].val, globalTable[key].line)
 
 
@@ -54,34 +53,34 @@ f = open("pruebas.txt", "r")#encoding = "utf8"...ahora funciona sin esto
 #print(len(linea))
 #print(type(linea))
 #print("\n")
+#bool flag = true
 
 for tokens in f:#recorre las lineas de codigo del archivo fuente
-    i = word_tokenize(tokens)
-    print(i)
-#    print(type(i))
-#    print(len(i))
-    
-    #print("espacio")
+    #i = word_tokenize(tokens)
+    i = tokens.split()
+#    print(i)
+    if(i[2] == "="):#si asigna valores
+        if(i[0] != "void" or i[0] != "int" or (i[0])!= "float" or i[0] != "string"):
+            tipo = None
+        else: tipo = i[0]
+        nombre = i[1]
+    elif(i[2]== ";"):#por si es solo una declaracion
+        if(i[0] != "void" or i[0] != "int" or (i[0])!= "float" or i[0] != "string"):
+            tipo = None
+        else: tipo = i[0]
+        nombre = i[1]
 
-#    for x in i:
-    tipo = i[0]
-    nombre = i[1]
+##    if(i[3] == '"'):
+#        valor = i[4]
+    valor = i[3][:len(i[3])-1]
+    obj = Var(tipo, nombre, lineCounter, valor)
+    saveToTable(obj)
+    lineCounter +=1
 
-    print("tipo:" + tipo)
-    print("nombre:" + nombre)
-#        if  x[2] == '=':
-#            print(i)
-#if x== "int" or x == "void" or x == "float" or x == "string":
-#tipo = x
-#print(tipo)
-#elif x[i] is 
+
+#    print("tipo:" + tipo)
+#    print("nombre:" + nombre)
+
 f.close()
-
-
-"""def main():
-    #hacer las varas aqui!...solo para que se vea bonito y separar las cosas...pero se puede quitar
-    #string textLine#ir extrayendo linea por linea
- 
-#se llama al main
-main()
-"""
+print("ESPACIO PARA VER VARAS")
+printHasTable()
