@@ -1,3 +1,16 @@
-float x = 40;
-int y = 40;
-string val = "cualquier vara mieo";
+int edad = 40 ;
+void funcion ( float v , string nombre ) {
+ if ( v > 0.0 ) {
+ pipa = 9
+ edad = rt
+ edad = edad + 5
+}
+ if ( v > 0.0 ) {
+ nombre = 'Mayor'
+ edad = edad + 5
+ int pipa = 0
+}
+while ( y > 9 ) {
+y = 0
+ }
+}
