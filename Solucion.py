@@ -2,15 +2,15 @@
 
 import nltk
 from nltk.tokenize import word_tokenize
-import tokenize
+from Queue import LifoQueue#
 
 class Var:
-    def __init__(self, _type, _name, _line, _val = None):
+    def __init__(self, _type, _name, _val = None, _father, _line):
         self.name = _name
         self.type = _type
         self.line = _line
         self.val = _val
-
+        self.father = _father
 
 
 
